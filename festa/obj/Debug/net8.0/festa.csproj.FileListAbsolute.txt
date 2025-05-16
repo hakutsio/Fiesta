@@ -1,0 +1,14 @@
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\bin\Debug\net8.0\festa.exe
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\bin\Debug\net8.0\festa.deps.json
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\bin\Debug\net8.0\festa.runtimeconfig.json
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\bin\Debug\net8.0\festa.dll
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\bin\Debug\net8.0\festa.pdb
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.AssemblyInfoInputs.cache
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.AssemblyInfo.cs
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.csproj.CoreCompileInputs.cache
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.dll
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\refint\festa.dll
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.pdb
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.genruntimeconfig.cache
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\ref\festa.dll
