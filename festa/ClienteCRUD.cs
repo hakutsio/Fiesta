@@ -2,27 +2,68 @@ public class ClienteCRUD {
 
     // atributos 
 
-    private List<ClienteDTO> listaClientes;
-    private ClienteDTO cliente;
+    private List<ClienteDTO> listaClientes;  // banco de dados 
+    private ClienteDTO cliente;             // cliente "da vez"
     private Tela tela;
+    private int linCodigo, colCodigo;
+    private int posicao;
 
     public ClienteCRUD()
     {
         this.listaClientes = new List<ClienteDTO>();
-        this.cliente = new ClienteDTO(0,"","","");
         this.tela = new Tela();
-
     }
 
 
     public void executarCRUD(){
 
-        //montar telado crud 
-        this.montarTelaCliente();
+        //1 - montar telado crud 
+        this.montarTelaCliente(15,5);
+
+        // preparar um registro em banco de cliente
+        this.cliente = new ClienteDTO();
+
+        // 2 - perguntar ao usuario o código do cliente 
+        this.entrarDados(1);
+
+        // 3 - procurar pela chave no "banco de dados" (lista de clientes)
+        bool achou = this.buscarCodigo();
+
+        // se não achou a chave no banco de dados 
+        if(!achou){
+            //4.1 - informar que não achou 
+            this.tela.centralizar("Cliente não encontrado. Deseja cadastrar (S/N)", 24,0,80);
+
+            // 4.2 - perguntar se deseja cadastrar 
+            string resp = Console.ReadLine();
+
+            // 4.3 - se o usuario informar que deseja cadastrar
+            if(resp.ToLower()=="s"){
+
+                //4.3.1 - perguntar os dados restates ao usuario
+                this.entrarDados(2);
+
+                // 4.3.2 - perguntar se o usuario confirma o cadastro 
+                this.tela.centralizar("Confirma cadastro (S/N): ",24,0,80);
+                resp = Console.ReadLine();
+
+                // 4.3.3 - se o usuario confirmar 
+                if(resp.ToLower() == "s"){
+                    // 4.3.3.1 - realizar a inclusão do novo cliente 
+                    this.listaClientes.Add(this.cliente);
+                }                
+            }
+        }
+
+        // 5 - se achou a chave no banco de dados
+        else {
+            // codigos 5.1 em diante
+
+        }
         /*
         logica possivel para o crud 
         ---------------------------
-        1 - montar a tela do crud 
+        1 - montar a tela do crud --> ok
         2 - perguntar ao usuario a chave do cliente 
         3 - procurar pela chave no "banco de dados"(listaCLientes)
         4 - se não achou a chave no banco de dados
@@ -50,24 +91,21 @@ public class ClienteCRUD {
         */
     }
 
-    private void montarTelaCliente(){
+/*
+    private void montarTelaCliente(int coluna, int linha){
 
-        int coluna, linha;
-        coluna = 30;
-        linha = 5;
+
         int coluna2 = coluna+30;
-
 
         this.tela.desenharMoldura(coluna,linha,coluna2,linha+6);
 
         linha++;
         this.tela.centralizar("cadastro de cliente", 6,30,60);
-        linha++;
 
+        linha++;
         coluna++;
         Console.SetCursorPosition(31,7);
         Console.Write("Codigo     :");
-        linha++;
 
         Console.SetCursorPosition(31,8);
         Console.Write("Nome       :");
@@ -79,6 +117,68 @@ public class ClienteCRUD {
 
         Console.SetCursorPosition(31,10);
         Console.Write("Telefone   :");
-        linha++;
     }
+*/
+
+    private bool buscarCodigo(){
+
+        bool encontrei = false ;
+        for(int i =0; i<this.listaClientes.Count; i++){
+            if(this.listaClientes[i].Codigo == this.cliente.Codigo){
+                encontrei = true;
+                this.posicao = i;
+                break;
+            }
+        }
+        return encontrei;
+    }
+  
+    private void montarTelaCliente(int coluna, int linha){
+
+        int coluna2= coluna+30;
+        List<string> cadCliente = new List<string>();
+        cadCliente.Add("Código   :");
+        cadCliente.Add("Nome     :");
+        cadCliente.Add("Email    :");
+        cadCliente.Add("Telefone :");
+
+        this.tela.desenharMoldura(coluna,linha,coluna2,linha+6);
+        linha++;
+        this.tela.centralizar("cadastro de cliente", linha,coluna,coluna2);
+
+        coluna++;
+        linha++;
+
+        this.linCodigo = linha;
+        this.colCodigo = coluna + cadCliente[0].Length;
+
+        for(int i=0; i<cadCliente.Count; i++){
+            Console.SetCursorPosition(coluna,linha);
+            Console.Write(cadCliente[i]);
+            linha++;
+        }
+    }
+
+    private void entrarDados(int qual){
+        // entrada de código (chave primaria / identificador único)
+        if(qual == 1){
+            Console.SetCursorPosition(colCodigo, linCodigo);
+            this.cliente.Codigo = int.Parse(Console.ReadLine());
+        }
+
+        // entrada de dados do registro 
+        if(qual == 2){
+            Console.SetCursorPosition(colCodigo, linCodigo+1);
+            this.cliente.Nome = Console.ReadLine();
+
+            Console.SetCursorPosition(colCodigo, linCodigo+2);
+            this.cliente.Email = Console.ReadLine();
+
+            Console.SetCursorPosition(colCodigo, linCodigo+3);
+            this.cliente.Telefone = Console.ReadLine();
+
+        }
+    }
+
 }
+

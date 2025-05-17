@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("festa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+080e77417ad8f260aef63626ae40b887e9a595b8")]
 [assembly: System.Reflection.AssemblyProductAttribute("festa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("festa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -12,3 +12,4 @@ C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\fest
 C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.pdb
 C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.genruntimeconfig.cache
 C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\ref\festa.dll
+C:\Users\vi_ni\OneDrive\Desktop\Vini Faculdade\Semestre_02\POO\projetoFesta\festa\obj\Debug\net8.0\festa.sourcelink.json

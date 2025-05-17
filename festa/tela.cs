@@ -33,9 +33,28 @@ public class Tela
         this.centralizar(titulo, 1, 0, this.largura);
     }
 
+    public void limparArea(int ci, int li, int cf, int lf){
+        for(int x = ci; x <= cf; x++){
+            for(int y = li; y <= lf; y++){
+                Console.SetCursorPosition(x,y);
+                Console.Write(" ");
+            }
+        }
+    }
 
-    public void desenharMoldura(int colIni, int linIni, int colFin, int linFin)
-    {
+
+
+
+
+
+
+
+
+
+
+
+
+    public void desenharMoldura(int colIni, int linIni, int colFin, int linFin){
 
         // limpar a area da moldura
         this.limparArea(colIni, linIni, colFin, linFin);
@@ -66,6 +85,7 @@ public class Tela
 
     public void centralizar(string texto, int lin, int colIni, int colFin)
     {
+        this.limparArea(colIni+1, lin, colFin-1, lin);
         int colTexto = ((colFin - colIni - texto.Length) / 2) + colIni;
         Console.SetCursorPosition(colTexto, lin);
         Console.Write(texto);
