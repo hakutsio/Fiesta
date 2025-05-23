@@ -30,35 +30,53 @@ public class ClienteCRUD {
         bool achou = this.buscarCodigo();
 
         // se não achou a chave no banco de dados 
-        if(!achou){
+        if (!achou)
+        {
             //4.1 - informar que não achou 
-            this.tela.centralizar("Cliente não encontrado. Deseja cadastrar (S/N)", 24,0,80);
+            this.tela.centralizar("Cliente não encontrado. Deseja cadastrar (S/N)", 24, 0, 80);
 
             // 4.2 - perguntar se deseja cadastrar 
             string resp = Console.ReadLine();
 
             // 4.3 - se o usuario informar que deseja cadastrar
-            if(resp.ToLower()=="s"){
+            if (resp.ToLower() == "s")
+            {
 
                 //4.3.1 - perguntar os dados restates ao usuario
                 this.entrarDados(2);
 
                 // 4.3.2 - perguntar se o usuario confirma o cadastro 
-                this.tela.centralizar("Confirma cadastro (S/N): ",24,0,80);
+                this.tela.centralizar("Confirma cadastro (S/N): ", 24, 0, 80);
                 resp = Console.ReadLine();
 
                 // 4.3.3 - se o usuario confirmar 
-                if(resp.ToLower() == "s"){
+                if (resp.ToLower() == "s")
+                {
                     // 4.3.3.1 - realizar a inclusão do novo cliente 
                     this.listaClientes.Add(this.cliente);
-                }                
+                }
             }
         }
 
         // 5 - se achou a chave no banco de dados
-        else {
+        else
+        {
             // codigos 5.1 em diante
+            this.mostrarDados();
 
+            // codigo 5.2 perguntar ao usuario se ele deseja voltar, alterar ou excluir 
+            this.tela.centralizar("o asno deseja voltar/Alterar/Excluir (V/A/E) : ", 24, 0, 80);
+            string resp = Console.ReadLine();
+
+            // 5.3 se o usuario deseja alterar 
+            if (resp.ToLower() == "a")
+            {
+
+            }
+            if (resp.ToLower() == "e")
+            {
+                
+            }
         }
         /*
         logica possivel para o crud 
@@ -132,19 +150,32 @@ public class ClienteCRUD {
         }
         return encontrei;
     }
-  
-    private void montarTelaCliente(int coluna, int linha){
 
-        int coluna2= coluna+30;
+    private void mostrarDados()
+    {
+        Console.SetCursorPosition(colCodigo, linCodigo+1);
+        Console.Write(this.listaClientes[this.posicao].Nome);
+
+        Console.SetCursorPosition(colCodigo, linCodigo+2);
+        Console.Write(this.listaClientes[this.posicao].Email);
+
+        Console.SetCursorPosition(colCodigo, linCodigo+3);
+        Console.Write(this.listaClientes[this.posicao].Telefone);
+    }
+    
+    private void montarTelaCliente(int coluna, int linha)
+    {
+
+        int coluna2 = coluna + 30;
         List<string> cadCliente = new List<string>();
         cadCliente.Add("Código   :");
         cadCliente.Add("Nome     :");
         cadCliente.Add("Email    :");
         cadCliente.Add("Telefone :");
 
-        this.tela.desenharMoldura(coluna,linha,coluna2,linha+6);
+        this.tela.desenharMoldura(coluna, linha, coluna2, linha + 6);
         linha++;
-        this.tela.centralizar("cadastro de cliente", linha,coluna,coluna2);
+        this.tela.centralizar("cadastro de cliente", linha, coluna, coluna2);
 
         coluna++;
         linha++;
@@ -152,8 +183,9 @@ public class ClienteCRUD {
         this.linCodigo = linha;
         this.colCodigo = coluna + cadCliente[0].Length;
 
-        for(int i=0; i<cadCliente.Count; i++){
-            Console.SetCursorPosition(coluna,linha);
+        for (int i = 0; i < cadCliente.Count; i++)
+        {
+            Console.SetCursorPosition(coluna, linha);
             Console.Write(cadCliente[i]);
             linha++;
         }
