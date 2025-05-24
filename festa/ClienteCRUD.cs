@@ -18,152 +18,129 @@ public class ClienteCRUD
 
     public void executarCRUD()
     {
-
-        //1 - montar telado crud 
-        this.montarTelaCliente(15, 5);
-
-        // preparar um registro em banco de cliente
-        this.cliente = new ClienteDTO();
-
-        // 2 - perguntar ao usuario o código do cliente 
-        this.entrarDados(1);
-
-        // 3 - procurar pela chave no "banco de dados" (lista de clientes)
-        bool achou = this.buscarCodigo();
-
-        // se não achou a chave no banco de dados 
-        if (!achou)
+        while (true)
         {
-            //4.1 - informar que não achou 
-            this.tela.centralizar("Cliente não encontrado. Deseja cadastrar (S/N)", 24, 0, 80);
+            //1 - montar telado crud 
+            this.montarTelaCliente(15, 5);
 
-            // 4.2 - perguntar se deseja cadastrar 
-            string resp = Console.ReadLine();
+            // preparar um registro em banco de cliente
+            this.cliente = new ClienteDTO();
 
-            // 4.3 - se o usuario informar que deseja cadastrar
-            if (resp.ToLower() == "s")
+            // 2 - perguntar ao usuario o código do cliente 
+            this.tela.centralizar("deixe o campo vazio para sair.", 24, 0, 80);
+            this.entrarDados(1);
+            if (this.cliente.Codigo == 0)
             {
-
-                //4.3.1 - perguntar os dados restates ao usuario
-                this.entrarDados(2);
-
-                // 4.3.2 - perguntar se o usuario confirma o cadastro 
-                this.tela.centralizar("Confirma cadastro (S/N): ", 24, 0, 80);
-                resp = Console.ReadLine();
-
-                // 4.3.3 - se o usuario confirmar 
-                if (resp.ToLower() == "s")
-                {
-                    // 4.3.3.1 - realizar a inclusão do novo cliente 
-                    this.incluirRegistro();
-                }
+                break;
             }
-        }
 
-        // 5 - se achou a chave no banco de dados
-        else
-        {
-            // codigos 5.1 em diante
-            this.mostrarDados();
+            // 3 - procurar pela chave no "banco de dados" (lista de clientes)
+            bool achou = this.buscarCodigo();
 
-            // codigo 5.2 perguntar ao usuario se ele deseja voltar, alterar ou excluir 
-            this.tela.centralizar("o asno deseja voltar/Alterar/Excluir (V/A/E) : ", 24, 0, 80);
-            string resp = Console.ReadLine();
-
-            // 5.3 se o usuario deseja alterar 
-            if (resp.ToLower() == "a")
+            // se não achou a chave no banco de dados 
+            if (!achou)
             {
-                // 5.3.1 pergunta os novos dados para o usuario 
-                this.tela.centralizar("Digite apenas o dado que deseja alterar", 24, 0, 80);
-                this.entrarDados(2);
+                //4.1 - informar que não achou 
+                this.tela.centralizar("Cliente não encontrado. Deseja cadastrar (S/N)", 24, 0, 80);
 
-                //5.3.2 pergunta se o usuario confirma a alteracao 
-                this.tela.centralizar("Confirma a aletraçao seu mulambo: (S/N): ", 24, 0, 80);
-                resp = Console.ReadLine();
+                // 4.2 - perguntar se deseja cadastrar 
+                string resp = Console.ReadLine();
 
-                //5.3.3 se o usuario confirmou a alteracao 
+                // 4.3 - se o usuario informar que deseja cadastrar
                 if (resp.ToLower() == "s")
                 {
-                    // 5.3.3.1 - gravar alteração dos dados do cliente
-                    this.alterarRegistro();
+
+                    //4.3.1 - perguntar os dados restates ao usuario
+                    this.entrarDados(2);
+
+                    // 4.3.2 - perguntar se o usuario confirma o cadastro 
+                    this.tela.centralizar("Confirma cadastro (S/N): ", 24, 0, 80);
+                    resp = Console.ReadLine();
+
+                    // 4.3.3 - se o usuario confirmar 
+                    if (resp.ToLower() == "s")
+                    {
+                        // 4.3.3.1 - realizar a inclusão do novo cliente 
+                        this.incluirRegistro();
+                    }
                 }
             }
 
-            if (resp.ToLower() == "e")
+            // 5 - se achou a chave no banco de dados
+            else
             {
+                // codigos 5.1 em diante
+                this.mostrarDados();
 
-                // 5.4.1 pergunta se o usuario confirma a exclusão 
-                this.tela.centralizar("confirma a exclusão boca de rancho? (S/N) :", 24, 0, 80);
-                resp = Console.ReadLine();
+                // codigo 5.2 perguntar ao usuario se ele deseja voltar, alterar ou excluir 
+                this.tela.centralizar("o asno deseja voltar/Alterar/Excluir (V/A/E) : ", 24, 0, 80);
+                string resp = Console.ReadLine();
 
-                //5.4.2 se o usuario confirmou exclusão 
-                if (resp.ToLower() == "s")
+                // 5.3 se o usuario deseja alterar 
+                if (resp.ToLower() == "a")
                 {
-                    //5.4.2.1 - excluir cliente
-                    this.excluirRegistro();
+                    // 5.3.1 pergunta os novos dados para o usuario 
+                    this.tela.centralizar("Digite apenas o dado que deseja alterar", 24, 0, 80);
+                    this.entrarDados(2);
+
+                    //5.3.2 pergunta se o usuario confirma a alteracao 
+                    this.tela.centralizar("Confirma a aletraçao seu mulambo: (S/N): ", 24, 0, 80);
+                    resp = Console.ReadLine();
+
+                    //5.3.3 se o usuario confirmou a alteracao 
+                    if (resp.ToLower() == "s")
+                    {
+                        // 5.3.3.1 - gravar alteração dos dados do cliente
+                        this.alterarRegistro();
+                    }
                 }
 
+                if (resp.ToLower() == "e")
+                {
+
+                    // 5.4.1 pergunta se o usuario confirma a exclusão 
+                    this.tela.centralizar("confirma a exclusão boca de rancho? (S/N) :", 24, 0, 80);
+                    resp = Console.ReadLine();
+
+                    //5.4.2 se o usuario confirmou exclusão 
+                    if (resp.ToLower() == "s")
+                    {
+                        //5.4.2.1 - excluir cliente
+                        this.excluirRegistro();
+                    }
+                }
             }
         }
         /*
-        logica possivel para o crud 
-        ---------------------------
-        1 - montar a tela do crud --> ok
-        2 - perguntar ao usuario a chave do cliente 
-        3 - procurar pela chave no "banco de dados"(listaCLientes)
-        4 - se não achou a chave no banco de dados
-            4.1 - informar que não achou 
-            4.2 - perguntar se deseja cadastrar 
-            4.3 se i usuario informar que deseja cadastrar
-                4.3.1 - perguntar os dados restantes ao usuario 
-                4.3.2 - perguntar se o usuario confirma o cadastrro 
-                4.3.3 - se o usuario confirmar 
-                    4.3.3.1 - realizar a inclusão do novo cliente 
-        5 - se achou a chave no banco de dados 
-            5.1 - mostrar os dados na tela 
-            5.2 - perguntar ao usuario se deseha voltar, alterar ou exckuir 
-            5.3 - se o usuario informou que deseja alterar 
-                5.3.1 - perguntar os novos dados para o usuario 
-                5.3.2 - perguntar se o usuario confirma a alteração 
-                5.3.3 - se o usuario confirmou a alteração 
-                    5.3.3.1 - gravar a alteração dis dadis di ckuebte 
-            5.4 - se o usuario informou que deseja excluir 
-                5.4.1 - pguntar se o usuario confirma a exclusão 
-                5.4.2 - se o usuario confirmou a exclusão
-                    5.4.2.1  excluir cadastro.
+            logica possivel para o crud 
+            ---------------------------
+            1 - montar a tela do crud --> ok
+            2 - perguntar ao usuario a chave do cliente 
+            3 - procurar pela chave no "banco de dados"(listaCLientes)
+            4 - se não achou a chave no banco de dados
+                4.1 - informar que não achou 
+                4.2 - perguntar se deseja cadastrar 
+                4.3 se i usuario informar que deseja cadastrar
+                    4.3.1 - perguntar os dados restantes ao usuario 
+                    4.3.2 - perguntar se o usuario confirma o cadastrro 
+                    4.3.3 - se o usuario confirmar 
+                        4.3.3.1 - realizar a inclusão do novo cliente 
+            5 - se achou a chave no banco de dados 
+                5.1 - mostrar os dados na tela 
+                5.2 - perguntar ao usuario se deseha voltar, alterar ou exckuir 
+                5.3 - se o usuario informou que deseja alterar 
+                    5.3.1 - perguntar os novos dados para o usuario 
+                    5.3.2 - perguntar se o usuario confirma a alteração 
+                    5.3.3 - se o usuario confirmou a alteração 
+                        5.3.3.1 - gravar a alteração dis dadis di ckuebte 
+                5.4 - se o usuario informou que deseja excluir 
+                    5.4.1 - pguntar se o usuario confirma a exclusão 
+                    5.4.2 - se o usuario confirmou a exclusão
+                        5.4.2.1  excluir cadastro.
 
-                    cada passo listado acima ou vai ser uma chamada para um metodo ou vai ser um if.
-        */
+                        cada passo listado acima ou vai ser uma chamada para um metodo ou vai ser um if.
+            */
     }
-
-    /*
-        private void montarTelaCliente(int coluna, int linha){
-
-
-            int coluna2 = coluna+30;
-
-            this.tela.desenharMoldura(coluna,linha,coluna2,linha+6);
-
-            linha++;
-            this.tela.centralizar("cadastro de cliente", 6,30,60);
-
-            linha++;
-            coluna++;
-            Console.SetCursorPosition(31,7);
-            Console.Write("Codigo     :");
-
-            Console.SetCursorPosition(31,8);
-            Console.Write("Nome       :");
-            linha++;
-
-            Console.SetCursorPosition(31,9);
-            Console.Write("Email      :");
-            linha++;
-
-            Console.SetCursorPosition(31,10);
-            Console.Write("Telefone   :");
-        }
-    */
 
     private bool buscarCodigo()
     {
@@ -228,7 +205,9 @@ public class ClienteCRUD
         if (qual == 1)
         {
             Console.SetCursorPosition(colCodigo, linCodigo);
-            this.cliente.Codigo = int.Parse(Console.ReadLine());
+            //this.cliente.Codigo = int.Parse(Console.ReadLine());
+            string codigo = Console.ReadLine();
+            if (codigo.Length > 0) this.cliente.Codigo = int.Parse(codigo);
         }
 
         // entrada de dados do registro 
@@ -273,3 +252,33 @@ public class ClienteCRUD
     }
 }
 
+
+
+ /*
+        private void montarTelaCliente(int coluna, int linha){
+
+
+            int coluna2 = coluna+30;
+
+            this.tela.desenharMoldura(coluna,linha,coluna2,linha+6);
+
+            linha++;
+            this.tela.centralizar("cadastro de cliente", 6,30,60);
+
+            linha++;
+            coluna++;
+            Console.SetCursorPosition(31,7);
+            Console.Write("Codigo     :");
+
+            Console.SetCursorPosition(31,8);
+            Console.Write("Nome       :");
+            linha++;
+
+            Console.SetCursorPosition(31,9);
+            Console.Write("Email      :");
+            linha++;
+
+            Console.SetCursorPosition(31,10);
+            Console.Write("Telefone   :");
+        }
+    */

@@ -44,16 +44,6 @@ public class Tela
 
 
 
-
-
-
-
-
-
-
-
-
-
     public void desenharMoldura(int colIni, int linIni, int colFin, int linFin){
 
         // limpar a area da moldura
